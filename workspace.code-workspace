@@ -1,0 +1,42 @@
+{
+    "folders": [
+        {
+            "name": "ProjectName",
+            "path": "./src"
+        },
+        {
+            "name": "workspace",
+            "path": "."
+        }
+    ],
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "PhpXdebug@DevContainer",
+                "type": "php",
+                "request": "launch",
+                "port": 9003,
+                "pathMappings": {
+                    "/workspace/src": "${workspaceFolder:ProjectName}"
+                },
+                "log": false,
+                "internalConsoleOptions": "neverOpen",
+            }
+        ]
+    },
+    "settings": {
+        "files.associations": {},
+        "editor.formatOnSave": true,
+        "bemHelper.responsiveLinting": false,
+        "bemHelper.maxWarningsCount": 0,
+        "files.autoSave": "afterDelay",
+        "intelephense.environment.phpVersion": "8.3.12",
+        "search.useIgnoreFiles": false,
+        "vsnotes.defaultNotePath": "/workspace/.vsnotes",
+        "phpstan.rootDir": "",
+        "phpstan.suppressWorkspaceMessage": true,
+        "search.exclude": {},
+        "files.exclude": {}
+    }
+}

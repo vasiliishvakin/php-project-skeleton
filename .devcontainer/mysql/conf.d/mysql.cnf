@@ -1,0 +1,24 @@
+[mysql]
+default-character-set=utf8mb4
+
+[mariadb]
+collation-server = utf8mb4_unicode_ci
+character-set-server = utf8mb4
+
+skip-name-resolve
+
+# Memory settings for a development environment:
+join_buffer_size = 128KB              # Increases the join buffer for development-related queries.
+performance_schema = OFF              # Disables performance schema to save memory.
+key_buffer_size = 4MB                 # Minimal allocation for MyISAM, mainly using InnoDB in development.
+innodb_buffer_pool_size = 256MB       # Reduced to avoid high memory usage in a development environment.
+innodb_log_file_size = 32M            # Moderate log file size, adequate for typical development scenarios.
+innodb_flush_log_at_trx_commit = 2    # Set to 2 for better performance (flush logs less frequently).
+
+max_connections = 20                  # Lower limit for fewer concurrent connections in development.
+max_allowed_packet = 64M              # Sufficient size for development operations.
+
+#slow_query_log = 1                    # Enable slow query logging for analysis of long-running queries.
+
+[client]
+default-character-set = utf8mb4

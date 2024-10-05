@@ -1,0 +1,63 @@
+{
+    "name": "webdevelopment",
+    "dockerComposeFile": "./compose.yaml",
+    "postCreateCommand": "bash -i /workspace/.devcontainer/scripts/post-create.sh",
+    "service": "devsrv",
+    "workspaceFolder": "/workspace",
+    "remoteEnv": {
+        "compose": "docker compose"
+    },
+    "shutdownAction": "stopCompose",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "alefragnani.Bookmarks",
+                "bierner.markdown-mermaid",
+                "bmewburn.vscode-intelephense-client",
+                "bradlc.vscode-tailwindcss",
+                "christian-kohler.path-intellisense",
+                "codezombiech.gitignore",
+                "dbaeumer.vscode-eslint",
+                "DEVSENSE.composer-php-vscode",
+                "dotenv.dotenv-vscode",
+                "eamodio.gitlens",
+                "EditorConfig.EditorConfig",
+                "esbenp.prettier-vscode",
+                "Gruntfuggly.todo-tree",
+                "howardzuo.vscode-favorites",
+                "jasonlhy.hungry-delete",
+                "marlom.keep-context",
+                "micnil.vscode-checkpoints",
+                "ms-azuretools.vscode-docker",
+                "ms-python.python",
+                "naumovs.color-highlight",
+                "neilbrayfield.php-docblocker",
+                "oderwat.indent-rainbow",
+                "onecentlin.laravel-blade",
+                "patricklee.vsnotes",
+                "redhat.vscode-xml",
+                "redhat.vscode-yaml",
+                "runtfuggly.todo-tree",
+                "rvest.vs-code-prettier-eslint",
+                "shufo.vscode-blade-formatter",
+                "streetsidesoftware.code-spell-checker-hebrew",
+                "streetsidesoftware.code-spell-checker-russian",
+                "streetsidesoftware.code-spell-checker-scientific-terms",
+                "streetsidesoftware.code-spell-checker",
+                "Tyriar.sort-lines",
+                "VisualStudioExptTeam.intellicode-api-usage-examples",
+                "VisualStudioExptTeam.vscodeintellicode-completions",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "WakaTime.vscode-wakatime",
+                "xdebug.php-debug",
+                "yzhang.markdown-all-in-one",
+                "ZainChen.json",
+                "Box-Of-Hats.bemhelper",
+                "DEVSENSE.profiler-php-vscode",
+                "adpyke.vscode-sql-formatter",
+                "SanderRonde.phpstan-vscode",
+                "open-southeners.laravel-pint"
+            ]
+        }
+    }
+}

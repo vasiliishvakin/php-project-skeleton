@@ -1,0 +1,74 @@
+services:
+    devsrv:
+        image: vasiliishvakin/webdevelopment-light:latest
+        container_name: ${COMPOSE_PROJECT_NAME}_devsrv
+        networks:
+            default:
+                aliases:
+                    - devsrv
+                    - php
+                    - node
+                    - python
+        ports:
+            - "0.0.0.0:80:80"
+            - "0.0.0.0:5173:5173"
+            - "0.0.0.0:8080:8080"
+        volumes:
+            - "./php/php.ini:/usr/local/etc/php/php.ini"
+            - "../:/workspace"
+
+            # shared folders
+            - "/var/run/docker.sock:/var/run/docker.sock"
+            - "~/.gitignore:/root/.gitignore"
+            # - "~/.wakatime.cfg:/root/.wakatime.cfg"
+
+            - "../data/bash/bash_history:/root/.bash_history"
+            - "../data/cache/composer:/root/.cache/composer"
+
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        working_dir: /workspace
+        environment:
+            TZ: Asia/Jerusalem
+        depends_on:
+            db:
+                condition: service_started
+
+    db:
+        image: mariadb:10.6
+        container_name: ${COMPOSE_PROJECT_NAME}_mysql
+        networks:
+            default:
+                aliases:
+                    - mysql
+        ports:
+            - "0.0.0.0:3306:3306"
+        volumes:
+            - "./mysql/conf.d:/etc/mysql/conf.d"
+            - "../data/mysql:/var/lib/mysql"
+            - "../data/dump:/docker-entrypoint-initdb.d"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+            MYSQL_DATABASE: ${MYSQL_DATABASE:-app}
+            MYSQL_USER: ${MYSQL_USER:-user}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD:-user}
+            TZ: Asia/Jerusalem
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+
+    mailhog:
+        image: mailhog/mailhog:latest
+        container_name: ${COMPOSE_PROJECT_NAME}_mailhog
+        networks:
+            default:
+                aliases:
+                    - mailhog
+        ports:
+            - "0.0.0.0:1025:1025"
+            - "0.0.0.0:8025:8025"
+
+networks:
+    default:
+        name: webdevelopment-network
+    webdevelopment-network:
+        external: true
